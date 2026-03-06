@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@android:color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/bookingIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ic_history_background"
+            android:backgroundTint="#E8F5E9"
+            android:padding="10dp"
+            android:src="@drawable/ic_history"
+            app:tint="#2E7D32" 
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@+id/bookingIcon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bookingStatus">
+
+            <TextView
+                android:id="@+id/bookingTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Electrician"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/bookingDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Feb 10, 2026"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/bookingStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Completed"
+            android:textColor="#2E7D32"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:background="@drawable/status_completed_background"
+            android:backgroundTint="#E8F5E9"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

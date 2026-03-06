@@ -1,0 +1,228 @@
+﻿Initialized native services in: C:\Users\dines\.gradle\native
+Initialized jansi services in: C:\Users\dines\.gradle\native
+The client will now receive all logging from the daemon (pid: 8). The daemon log file: C:\Users\dines\.gradle\daemon\9.2.1\daemon-8.out.log
+Starting 25th build in daemon [uptime: 3 hrs 36 mins 52.083 secs, performance: 99%, GC rate: 0.00/s, heap usage: 0% of 2 GiB]
+Using 16 worker leases.
+Operational build model parameters: {requiresToolingModels=false, parallelProjectExecution=false, configureOnDemand=false, configurationCache=false, configurationCacheParallelStore=false, configurationCacheParallelLoad=true, isolatedProjects=false, parallelProjectConfiguration=false, intermediateModelCache=false, parallelToolingApiActions=false, invalidateCoupledProjects=false, modelAsProjectDependency=false, resilientModelBuilding=false}
+Now considering [C:\Users\dines\OneDrive\Desktop\FIXITNOW] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Resolved plugin [id: 'org.gradle.toolchains.foojay-resolver-convention', version: '1.0.0']
+Settings evaluated using settings file 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\settings.gradle.kts'.
+Projects loaded. Root project using build file 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\build.gradle.kts'.
+Included projects: [root project 'FIXIT NOW', project ':app']
+
+> Configure project :
+Evaluating root project 'FIXIT NOW' using build file 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\build.gradle.kts'.
+Resolved plugin [id: 'com.android.application', version: '9.0.1', apply: false]
+
+> Configure project :app
+Evaluating project ':app' using build file 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build.gradle.kts'.
+Resolved plugin [id: 'com.android.application', version: '9.0.1']
+Build 762894ba-6e71-4a58-aae7-e1ba035e9d0e is started
+Using default execution profile
+All projects evaluated.
+Task path ':app:compileDebugKotlin' matched project ':app'
+Task name matched 'compileDebugKotlin'
+Adding -Xuse-inline-scopes-numbers Kotlin compiler flag for task :app:compileDebugKotlin
+Selected primary task 'compileDebugKotlin' from project :app
+Tasks to be executed: [task ':app:preBuild', task ':app:preDebugBuild', task ':app:dataBindingMergeDependencyArtifactsDebug', task ':app:generateDebugResources', task ':app:mergeDebugResources', task ':app:packageDebugResources', task ':app:processDebugNavigationResources', task ':app:parseDebugLocalResources', task ':app:dataBindingGenBaseClassesDebug', task ':app:generateDebugRFile', task ':app:compileDebugKotlin']
+Tasks that were excluded: []
+Resolve mutations for :app:preBuild (Thread[#4087,Execution worker,5,main]) started.
+:app:preBuild (Thread[#4087,Execution worker,5,main]) started.
+
+> Task :app:preBuild UP-TO-DATE
+Skipping task ':app:preBuild' as it has no actions.
+Resolve mutations for :app:preDebugBuild (Thread[#4087,Execution worker,5,main]) started.
+:app:preDebugBuild (Thread[#4096,Execution worker Thread 10,5,main]) started.
+
+> Task :app:preDebugBuild UP-TO-DATE
+Skipping task ':app:preDebugBuild' as it has no actions.
+Resolve mutations for :app:dataBindingMergeDependencyArtifactsDebug (Thread[#4096,Execution worker Thread 10,5,main]) started.
+:app:dataBindingMergeDependencyArtifactsDebug (Thread[#4096,Execution worker Thread 10,5,main]) started.
+
+> Task :app:dataBindingMergeDependencyArtifactsDebug UP-TO-DATE
+Caching disabled for task ':app:dataBindingMergeDependencyArtifactsDebug' because:
+  Build cache is disabled
+  Caching has been disabled for the task
+Skipping task ':app:dataBindingMergeDependencyArtifactsDebug' as it is up-to-date.
+Resolve mutations for :app:generateDebugResources (Thread[#4096,Execution worker Thread 10,5,main]) started.
+:app:generateDebugResources (Thread[#4096,Execution worker Thread 10,5,main]) started.
+
+> Task :app:generateDebugResources UP-TO-DATE
+Caching disabled for task ':app:generateDebugResources' because:
+  Build cache is disabled
+Skipping task ':app:generateDebugResources' as it is up-to-date.
+Resolve mutations for :app:mergeDebugResources (Thread[#4096,Execution worker Thread 10,5,main]) started.
+:app:mergeDebugResources (Thread[#4096,Execution worker Thread 10,5,main]) started.
+
+> Task :app:mergeDebugResources UP-TO-DATE
+Caching disabled for task ':app:mergeDebugResources' because:
+  Build cache is disabled
+Skipping task ':app:mergeDebugResources' as it is up-to-date.
+Resolve mutations for :app:packageDebugResources (Thread[#4096,Execution worker Thread 10,5,main]) started.
+:app:packageDebugResources (Thread[#4096,Execution worker Thread 10,5,main]) started.
+
+> Task :app:packageDebugResources UP-TO-DATE
+Caching disabled for task ':app:packageDebugResources' because:
+  Build cache is disabled
+Skipping task ':app:packageDebugResources' as it is up-to-date.
+Resolve mutations for :app:processDebugNavigationResources (Thread[#4096,Execution worker Thread 10,5,main]) started.
+:app:processDebugNavigationResources (Thread[#4096,Execution worker Thread 10,5,main]) started.
+
+> Task :app:processDebugNavigationResources UP-TO-DATE
+Caching disabled for task ':app:processDebugNavigationResources' because:
+  Build cache is disabled
+Skipping task ':app:processDebugNavigationResources' as it is up-to-date.
+Resolve mutations for :app:parseDebugLocalResources (Thread[#4096,Execution worker Thread 10,5,main]) started.
+:app:parseDebugLocalResources (Thread[#4096,Execution worker Thread 10,5,main]) started.
+
+> Task :app:parseDebugLocalResources UP-TO-DATE
+Caching disabled for task ':app:parseDebugLocalResources' because:
+  Build cache is disabled
+Skipping task ':app:parseDebugLocalResources' as it is up-to-date.
+Resolve mutations for :app:dataBindingGenBaseClassesDebug (Thread[#4096,Execution worker Thread 10,5,main]) started.
+:app:dataBindingGenBaseClassesDebug (Thread[#4088,Execution worker Thread 2,5,main]) started.
+
+> Task :app:dataBindingGenBaseClassesDebug UP-TO-DATE
+Caching disabled for task ':app:dataBindingGenBaseClassesDebug' because:
+  Build cache is disabled
+Skipping task ':app:dataBindingGenBaseClassesDebug' as it is up-to-date.
+Resolve mutations for :app:generateDebugRFile (Thread[#4088,Execution worker Thread 2,5,main]) started.
+:app:generateDebugRFile (Thread[#4088,Execution worker Thread 2,5,main]) started.
+
+> Task :app:generateDebugRFile UP-TO-DATE
+Caching disabled for task ':app:generateDebugRFile' because:
+  Build cache is disabled
+Skipping task ':app:generateDebugRFile' as it is up-to-date.
+Resolve mutations for :app:compileDebugKotlin (Thread[#4088,Execution worker Thread 2,5,main]) started.
+:app:compileDebugKotlin (Thread[#4088,Execution worker Thread 2,5,main]) started.
+
+> Task :app:compileDebugKotlin FAILED
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+Custom actions are attached to task ':app:compileDebugKotlin'.
+Caching disabled for task ':app:compileDebugKotlin' because:
+  Build cache is disabled
+Task ':app:compileDebugKotlin' is not up-to-date because:
+  Input property 'sources' file C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\TechnicianHomeActivity.kt has changed.
+  Input property 'sources' file C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\TrackTechnicianActivity.kt has changed.
+  Input property 'sources' file C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\network\ApiService.kt has changed.
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\kotlin', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+file or directory 'C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\debug\java', not found
+Kotlin source files: C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\AddAddressActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\AddressSelectionActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\AiChatActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\AppSettingsActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\AvailableTechniciansActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\BookingDetailsActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\BookingPagerAdapter.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\ChatActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\ChatAdapter.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\ChatDetailActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\ChatDetailAdapter.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\ChatFragment.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\CompleteJobActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\CreateAccountActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\CurvedBottomNavigationView.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\DocumentVerificationActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\EditProfileActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\ElectricianMenuActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\FavoritesActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\ForgotPasswordActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\HelpSupportTechnicianActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\HistoryActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\HistoryFragment.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\HomeActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\HomeFragment.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\JobRequestDetailsActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\LocationActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\MainActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\ManageAddressActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\MyReviewsActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\network\ApiService.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\network\GroqApiService.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\network\GroqRetrofitClient.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\network\RetrofitClient.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\NewPasswordActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\NotificationsActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\OtpActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\PaymentMethodsActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\PayoutSettingsActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\PlumberMenuActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\PrivacySecurityActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\ProfileFragment.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\RewardsActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\RoleSelectionActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\SavedAddressAdapter.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\Service.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\ServiceMenuAdapter.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\ServiceRadiusActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\SplashActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\StartJobActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\TechnicianChatFragment.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\TechnicianHistoryFragment.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\TechnicianHomeActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\TechnicianHomeFragment.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\TechnicianJobHistoryActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\TechnicianJobHistoryAdapter.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\TechnicianNotificationsActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\TechnicianProfileFragment.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\TechnicianRegistrationActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\TechnicianSkillsActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\TermsConditionsActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\TrackTechnicianActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\VerificationStatusActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\WalletActivity.kt, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\src\main\java\com\simats\fixitnow\WorkingHoursActivity.kt
+Java source files: C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityAddAddressBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityAddressSelectionBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityAppSettingsBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityAvailableTechniciansBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityBookingDetailsBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityChatBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityChatDetailBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityCompleteJobBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityCreateAccountBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityDocumentVerificationBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityEditProfileBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityElectricianMenuBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityFavoritesBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityForgotPasswordBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityHelpSupportTechnicianBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityHistoryBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityHomeBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityJobRequestDetailsBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityLocationBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityMainBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityManageAddressBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityMyReviewsBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityNewPasswordBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityNotificationsBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityOtpBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityPaymentMethodsBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityPayoutSettingsBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityPlumberMenuBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityPrivacySecurityBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityRewardsBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityRoleSelectionBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityServiceRadiusBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivitySplashBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityStartJobBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityTechnicianHomeBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityTechnicianJobHistoryBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityTechnicianNotificationsBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityTechnicianRegistrationBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityTechnicianSkillsBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityTermsConditionsBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityTrackTechnicianBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityVerificationStatusBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityWalletBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ActivityWorkingHoursBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\BookingCardBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\DialogRatingBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\FragmentChatBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\FragmentHistoryBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\FragmentHomeBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\FragmentProfileBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\FragmentTechnicianChatBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\FragmentTechnicianHistoryBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\FragmentTechnicianHomeBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\FragmentTechnicianProfileBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemActiveBookingCardBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemChatListBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemChatReceivedBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemChatSentBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemCircuitBreakerBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemElectricianServiceBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemFanInstallationBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemFavoriteTechnicianBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemHistoryCancelledBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemHistoryCompletedBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemLightInstallationBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemNotificationSettingBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemPlumberServiceBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemProfileSettingBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemReviewBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemSavedAddressBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemServiceCategoryBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemServiceListItemBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemSocketInstallationBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemTechnicianCardBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemTechnicianJobBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemTransactionBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ItemWiringIssueBinding.java, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\generated\data_binding_base_class_source_out\debug\out\com\simats\fixitnow\databinding\ServiceCardBinding.java
+Script source files: 
+Script file extensions: 
+Using Kotlin/JVM incremental compilation
+[KOTLIN] Kotlin compilation 'jdkHome' argument: C:\Program Files\Android\Android Studio\jbr
+Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JVM, reportCategories=[0, 3], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[]), sourceChanges=org.jetbrains.kotlin.buildtools.api.SourcesChanges$Known@1339f29e, classpathChanges=NoChanges, workingDir=C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\kotlin\compileDebugKotlin\cacheable, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\kotlin\compileDebugKotlin\local-state\build-history.bin, useModuleDetection=true), icFeatures=IncrementalCompilationFeatures(usePreciseJavaTracking=true, withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false, enableMonotonousIncrementalCompileSetExpansion=true), outputFiles=[C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\intermediates\built_in_kotlinc\debug\compileDebugKotlin\classes, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\kotlin\compileDebugKotlin\cacheable, C:\Users\dines\OneDrive\Desktop\FIXITNOW\app\build\kotlin\compileDebugKotlin\local-state])
+Finished executing kotlin compiler using DAEMON strategy
+Restoring task outputs to pre-compilation state
+./gradlew : e: file:///C:
+/Users/dines/OneDrive/Des
+ktop/FIXITNOW/app/src/mai
+n/java/com/simats/fixitno
+w/TrackTechnicianActivity
+.kt:96:17 Unresolved 
+reference 
+'bookedTechEmail'.
+At line:1 char:1
++ ./gradlew 
+:app:compileDebugKotlin 
+--info 2>&1 | Out-File 
+-Encoding ut ...
++ ~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo       
+       : NotSpecified:   
+  (e: file:///C:/U...o   
+ kedTechEmail'.:Strin    
+g) [], RemoteExcepti    
+on
+    + FullyQualifiedErro 
+   rId : NativeCommandE  
+  rror
+ 
+e: file:///C:/Users/dines
+/OneDrive/Desktop/FIXITNO
+W/app/src/main/java/com/s
+imats/fixitnow/TrackTechn
+icianActivity.kt:98:50 
+Unresolved reference 
+'bookedTechEmail'.
+Build 762894ba-6e71-4a58-aae7-e1ba035e9d0e is closed
+
+FAILURE: Build failed 
+with an exception.
+
+* What went wrong:
+Execution failed for 
+task ':app:compileDebugKo
+tlin'.
+> A failure occurred 
+while executing org.jetbr
+ains.kotlin.compilerRunne
+r.GradleCompilerRunnerWit
+hWorkers$GradleKotlinComp
+ilerWorkAction
+   > Compilation error. 
+See log for more details
+
+* Try:
+> Run with --stacktrace 
+option to get the stack 
+trace.
+> Run with --debug 
+option to get more log 
+output.
+> Run with --scan to 
+generate a Build Scan 
+(powered by Develocity).
+> Get more help at 
+https://help.gradle.org.
+
+9 actionable tasks: 1 executed, 8 up-to-date
+Watched directory hierarchies: [C:\Users\dines\OneDrive\Desktop\FIXITNOW]
+BUILD FAILED in 6s

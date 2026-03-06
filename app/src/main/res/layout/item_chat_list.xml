@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Avatar container with green dot overlay -->
+        <FrameLayout
+            android:id="@+id/avatarContainer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/chatAvatar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/chat_avatar_placeholder"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+            <!-- Green dot: new message indicator -->
+            <View
+                android:id="@+id/newMessageDot"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_gravity="bottom|end"
+                android:background="@drawable/green_dot_indicator"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/chatName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="Customer Support"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/chatTime"
+            app:layout_constraintStart_toEndOf="@+id/avatarContainer"
+            app:layout_constraintTop_toTopOf="@+id/avatarContainer" />
+
+        <TextView
+            android:id="@+id/chatRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AI Assistant"
+            android:textColor="#757575"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/chatName"
+            app:layout_constraintTop_toBottomOf="@+id/chatName" />
+
+        <TextView
+            android:id="@+id/chatPreview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="How can I help you today?"
+            android:textColor="#757575"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/unreadCount"
+            app:layout_constraintStart_toStartOf="@+id/chatName"
+            app:layout_constraintTop_toBottomOf="@+id/chatRole" />
+
+        <TextView
+            android:id="@+id/chatTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Now"
+            android:textColor="#BDBDBD"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/chatName" />
+
+        <TextView
+            android:id="@+id/unreadCount"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/unread_badge_background"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/chatPreview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chatTime" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F5FF">
+
+    <View
+        android:id="@+id/headerBackground"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/technician_header_background"
+        app:layout_constraintHeight_percent="0.65"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/icon_circle_background"
+        android:padding="8dp"
+        android:src="@drawable/ic_arrow_back"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@android:color/black" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/etaCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="12dp"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:paddingTop="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ETA"
+                android:textColor="#9E9E9E"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/etaText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12 mins"
+                android:textColor="#3C61FF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <ImageView
+        android:id="@+id/navigationIcon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:rotation="-45"
+        android:src="@drawable/ic_send"
+        app:layout_constraintBottom_toTopOf="@+id/navigatingText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/headerBackground"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:tint="#80FFFFFF" />
+
+    <TextView
+        android:id="@+id/navigatingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Navigating to customer..."
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/headerBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navigationIcon" />
+
+    <TextView
+        android:id="@+id/customerNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="#F0EBF5"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_location_pin"
+                    app:tint="#757575" />
+
+                <TextView
+                    android:id="@+id/addressText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="123 Main Street, Apt 4B, San Francisco, CA"
+                    android:textColor="#616161"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/callButton"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:text="Call"
+                    android:textAllCaps="false"
+                    android:textColor="#3C61FF"
+                    android:textSize="16sp"
+                    app:cornerRadius="16dp"
+                    app:icon="@drawable/ic_phone"
+                    app:iconGravity="textStart"
+                    app:iconTint="#3C61FF"
+                    app:strokeColor="#D1D9FF" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/messageButton"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#F5F5F5"
+                    android:text="Message"
+                    android:textAllCaps="false"
+                    android:textColor="#333333"
+                    android:textSize="16sp"
+                    app:cornerRadius="16dp"
+                    app:icon="@drawable/ic_chat"
+                    app:iconGravity="textStart"
+                    app:iconTint="#333333" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/startJobButton"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#3C61FF"
+                android:text="Start Job"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cornerRadius="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Tap when you arrive at the location"
+                android:textColor="#9E9E9E"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

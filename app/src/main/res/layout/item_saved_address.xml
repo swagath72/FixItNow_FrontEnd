@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/iconContainer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:cardBackgroundColor="#E8EAF6"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/addressIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_home_address"
+                app:tint="#3C61FF" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/addressTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Home"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/iconContainer"
+            app:layout_constraintTop_toTopOf="@+id/iconContainer" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/defaultChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Default"
+            android:textColor="#4CAF50"
+            app:chipBackgroundColor="#E8F5E9"
+            app:chipCornerRadius="8dp"
+            app:chipMinHeight="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/addressTitle"
+            app:layout_constraintStart_toEndOf="@+id/addressTitle"
+            app:layout_constraintTop_toTopOf="@+id/addressTitle" />
+
+        <ImageView
+            android:id="@+id/locationIcon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/ic_location_pin"
+            app:layout_constraintStart_toStartOf="@+id/addressTitle"
+            app:layout_constraintTop_toBottomOf="@+id/addressTitle"
+            app:tint="#757575" />
+
+        <TextView
+            android:id="@+id/addressDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="123 Main Street, Apt 4B, San Francisco, CA 94102"
+            android:textColor="#757575"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/locationIcon"
+            app:layout_constraintTop_toTopOf="@+id/locationIcon" />
+
+        <TextView
+            android:id="@+id/addressPhone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:textColor="#757575"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/locationIcon"
+            app:layout_constraintTop_toBottomOf="@+id/addressDetails"
+            tools:text="Phone: +1 123 456 7890" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addressPhone">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/editButton"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:textAllCaps="false"
+                android:textColor="#3C61FF"
+                app:icon="@drawable/ic_edit"
+                app:iconTint="#3C61FF" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/deleteButton"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Delete"
+                android:textAllCaps="false"
+                android:textColor="#F44336"
+                app:icon="@drawable/ic_delete"
+                app:iconTint="#F44336" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

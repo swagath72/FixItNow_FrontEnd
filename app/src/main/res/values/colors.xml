@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#3C61FF</color>
+    <color name="nav_bar_background">#2D2D2D</color>
+    <color name="nav_indicator_pill">#8B3DFF</color>
+    <color name="nav_item_unselected">#AAAAAA</color>
+    <color name="input_text_color">#1A1A1A</color>
+    <color name="hint_text_color">#666666</color>
+    <color name="text_input_box_stroke">#3C61FF</color>
+</resources>

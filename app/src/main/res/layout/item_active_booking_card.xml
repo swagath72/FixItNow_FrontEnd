@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="4dp"
+        app:cardCornerRadius="40dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@android:color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp">
+
+            <ImageView
+                android:id="@+id/activeIcon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/ic_location_background"
+                android:backgroundTint="#FFF3E0"
+                android:padding="10dp"
+                android:src="@drawable/ic_location_pin"
+                app:tint="#EF6C00"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintStart_toEndOf="@+id/activeIcon"
+                app:layout_constraintEnd_toStartOf="@+id/chevron"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/activeServiceName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Service"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15 mins"
+                        android:textSize="10sp"
+                        android:textColor="#E23744"
+                        android:background="@drawable/ic_location_background"
+                        android:backgroundTint="#FFEBEE"
+                        android:paddingStart="6dp"
+                        android:paddingEnd="6dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:layout_marginStart="8dp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activeTechName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Technician"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="12sp"
+                    android:layout_marginTop="2dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="4dp">
+
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="6dp"
+                        android:background="@drawable/dot_active"
+                        android:backgroundTint="#E23744"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Technician on the way"
+                        android:textColor="#E23744"
+                        android:textSize="12sp"
+                        android:layout_marginStart="4dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/chevron"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow_forward"
+                app:tint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

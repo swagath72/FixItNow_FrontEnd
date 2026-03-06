@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/techImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_person"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/RoundedImage" />
+
+        <TextView
+            android:id="@+id/techName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Robert Wilson"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/favoriteButton"
+            app:layout_constraintStart_toEndOf="@+id/techImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/techRole"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:text="Master Electrician"
+            android:textColor="#757575"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/favoriteButton"
+            app:layout_constraintStart_toEndOf="@+id/techImage"
+            app:layout_constraintTop_toBottomOf="@+id/techName" />
+
+        <LinearLayout
+            android:id="@+id/ratingLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/techImage"
+            app:layout_constraintTop_toBottomOf="@+id/techRole">
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/ic_star"
+                app:tint="#FFC107" />
+
+            <TextView
+                android:id="@+id/ratingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="4.9 (234)"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginStart="12dp"
+                android:src="@drawable/ic_location_pin"
+                app:tint="#757575" />
+
+            <TextView
+                android:id="@+id/distanceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="2.5 km away"
+                android:textColor="#757575"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bookNowButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text="Book Now"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            app:cornerRadius="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/phoneButton"
+            app:layout_constraintStart_toEndOf="@+id/techImage"
+            app:layout_constraintTop_toBottomOf="@+id/ratingLayout" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/phoneButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#F5F5F5"
+            android:padding="0dp"
+            app:icon="@drawable/ic_phone"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconTint="#424242"
+            app:layout_constraintBottom_toBottomOf="@+id/bookNowButton"
+            app:layout_constraintEnd_toStartOf="@+id/chatButton"
+            app:layout_constraintStart_toEndOf="@+id/bookNowButton"
+            app:layout_constraintTop_toTopOf="@+id/bookNowButton"
+            app:shapeAppearanceOverlay="@style/CircleImage" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/chatButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#F5F5F5"
+            android:padding="0dp"
+            app:icon="@drawable/ic_chat"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconTint="#424242"
+            app:layout_constraintBottom_toBottomOf="@+id/bookNowButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/phoneButton"
+            app:layout_constraintTop_toTopOf="@+id/bookNowButton"
+            app:shapeAppearanceOverlay="@style/CircleImage" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/favoriteButton"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:cardBackgroundColor="#FFF0F0"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_favorite"
+                app:tint="#F44336" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

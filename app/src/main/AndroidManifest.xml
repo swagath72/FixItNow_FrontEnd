@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:label="FIXIT NOW"
+        android:usesCleartextTraffic="true"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FIXITNOW">
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateAccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OtpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RoleSelectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LocationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.google.android.gms.location.LocationSettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TechnicianRegistrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DocumentVerificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TechnicianHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddressSelectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ManageAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".ChatDetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentMethodsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WalletActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotificationsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TechnicianNotificationsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".RewardsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyReviewsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FavoritesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TermsConditionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PrivacySecurityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AppSettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ElectricianMenuActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".PlumberMenuActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".BookingDetailsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".AvailableTechniciansActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".TrackTechnicianActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".TechnicianSkillsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".ServiceRadiusActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".WorkingHoursActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".VerificationStatusActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".PayoutSettingsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".TechnicianJobHistoryActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".HelpSupportTechnicianActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".JobRequestDetailsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".StartJobActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".CompleteJobActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".AiChatActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
+    </application>
+
+</manifest>

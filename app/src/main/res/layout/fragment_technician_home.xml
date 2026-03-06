@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F5FF">
+
+    <!-- Gradient Header -->
+    <View
+        android:id="@+id/headerBackground"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@drawable/technician_header_background"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Welcome Back!"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/userNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Mike Johnson"
+        android:textColor="#E0E0E0"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/welcomeText"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
+
+    <LinearLayout
+        android:id="@+id/locationContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/userNameText"
+        app:layout_constraintTop_toBottomOf="@+id/userNameText">
+
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@drawable/ic_location_pin"
+            app:tint="#E0E0E0" />
+
+        <TextView
+            android:id="@+id/locationText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="Set your location"
+            android:textColor="#E0E0E0"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+
+    <!-- Online Status Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/statusCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="#20FFFFFF"
+        app:cardElevation="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/userNameText">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Online Status"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/statusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Not accepting jobs"
+                    android:textColor="#E0E0E0"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/onlineSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:thumbTint="@android:color/white"
+                app:trackTint="#80FFFFFF"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Content Scroll -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:clipToPadding="false"
+        android:paddingBottom="260dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Earnings Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="24dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp"
+                    app:cardBackgroundColor="@android:color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="12dp">
+                            
+                            <ImageView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/ic_verified_white" 
+                                android:background="@drawable/ic_customer_background"
+                                android:backgroundTint="#E0F7FA"
+                                android:padding="6dp"
+                                app:tint="#00BFA5"/>
+                            
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="Today"
+                                android:textColor="#757575"/>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/todayEarnings"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="₹0"
+                            android:textColor="@android:color/black"
+                            android:textSize="24sp"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp"
+                    app:cardBackgroundColor="#6200EA">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="12dp">
+
+                            <ImageView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/ic_verified_white"
+                                android:background="@drawable/ic_customer_background"
+                                android:backgroundTint="#90CAF9"
+                                android:padding="6dp"
+                                app:tint="@android:color/white"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="This Week"
+                                android:textColor="#E0E0E0"/>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/weekEarnings"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="₹0"
+                            android:textColor="@android:color/white"
+                            android:textSize="24sp"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <!-- Monthly Earnings Row -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#03A9F4">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_verified_white"
+                            android:background="@drawable/ic_customer_background"
+                            android:backgroundTint="#B3E5FC"
+                            android:padding="6dp"
+                            app:tint="@android:color/white"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="This Month"
+                            android:textColor="#E0E0E0"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/monthEarnings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₹0"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- New Job Requests Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="New Job Requests"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+                
+                <TextView
+                    android:id="@+id/requestCountText"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/ic_location_background"
+                    android:backgroundTint="#FFEBEE"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="#D32F2F"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/jobRequestsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Jobs will be added here -->
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Swipeable Live Job Tracking (Technician Side) -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/activeJobsViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginBottom="8dp"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/jobIndicator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/jobIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="12dp"
+        android:layout_marginBottom="112dp"
+        android:background="@android:color/transparent"
+        app:tabBackground="@drawable/tab_indicator_selector"
+        app:tabIndicatorHeight="0dp"
+        app:tabGravity="center"
+        app:tabMaxWidth="12dp"
+        app:tabPaddingEnd="6dp"
+        app:tabPaddingStart="6dp"
+        app:tabRippleColor="@null"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

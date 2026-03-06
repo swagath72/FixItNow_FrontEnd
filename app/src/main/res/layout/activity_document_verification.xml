@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F5FF"
+    tools:context=".DocumentVerificationActivity">
+
+    <View
+        android:id="@+id/headerBackground"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/technician_header_background"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_arrow_forward"
+        android:rotation="180"
+        app:tint="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Document Verification"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backButton" />
+
+    <TextView
+        android:id="@+id/subtitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Upload required documents"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/titleText"
+        app:layout_constraintTop_toBottomOf="@+id/titleText" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subtitleText">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/ic_customer_background" 
+                        android:padding="10dp"
+                        android:src="@drawable/ic_description_white"
+                        app:tint="@android:color/white"/>
+                        <!-- Using ic_description_white placeholder, might need to create ic_description if not exists, 
+                             but reusing existing icons for now or standard one. 
+                             Wait, I should check available icons. Using ic_history as placeholder if specific one missing -->
+                    
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Government ID"
+                            android:textColor="@android:color/black"
+                            android:textStyle="bold"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Upload your driving license or Aadhaar"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp"/>
+                        
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/uploadIdButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Upload"
+                            android:backgroundTint="#3C61FF"
+                            android:layout_marginTop="8dp"
+                            app:icon="@drawable/ic_upload"
+                            app:cornerRadius="20dp"
+                            android:textAllCaps="false"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/ic_technician_background" 
+                        android:padding="10dp"
+                        android:src="@drawable/ic_verified_white"
+                        app:tint="@android:color/white"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Skill Certificate"
+                            android:textColor="@android:color/black"
+                            android:textStyle="bold"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Upload your training certificate"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/uploadCertificateButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Upload"
+                            android:backgroundTint="#3C61FF"
+                            android:layout_marginTop="8dp"
+                            app:icon="@drawable/ic_upload"
+                            app:cornerRadius="20dp"
+                            android:textAllCaps="false"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/ic_customer_background" 
+                        android:padding="10dp"
+                        android:src="@drawable/ic_image"
+                        app:tint="@android:color/white"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Work Photos"
+                            android:textColor="@android:color/black"
+                            android:textStyle="bold"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Upload photos of your previous work"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/uploadPhotosButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Upload"
+                            android:backgroundTint="#3C61FF"
+                            android:layout_marginTop="8dp"
+                            app:icon="@drawable/ic_upload"
+                            app:cornerRadius="20dp"
+                            android:textAllCaps="false"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/submitButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Submit for Verification"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:backgroundTint="#BDBDBD"
+                android:enabled="false"
+                app:cornerRadius="12dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F5FF">
+
+    <!-- Header -->
+    <View
+        android:id="@+id/headerBackground"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/technician_header_background"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_arrow_back"
+        app:tint="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Job Request"
+        android:textColor="@android:color/white"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/backButton"
+        app:layout_constraintTop_toBottomOf="@+id/backButton" />
+
+    <TextView
+        android:id="@+id/subtitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Review job details"
+        android:textColor="#E0E0E0"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/titleText"
+        app:layout_constraintTop_toBottomOf="@+id/titleText" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonContainer"
+        app:layout_constraintTop_toBottomOf="@+id/headerBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Customer Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/customerImageContainer"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        app:cardCornerRadius="32dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#E3F2FD"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="12dp"
+                            android:src="@drawable/ic_person"
+                            app:tint="#3C61FF" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:id="@+id/customerNameText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Sarah Johnson"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/customerImageContainer"
+                        app:layout_constraintTop_toTopOf="@+id/customerImageContainer" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Customer"
+                        android:textColor="#757575"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@+id/customerNameText"
+                        app:layout_constraintTop_toBottomOf="@+id/customerNameText" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/callButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardBackgroundColor="#F2F5FF"
+                        app:cardElevation="0dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_phone"
+                            app:tint="#3C61FF" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Service Details Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Service Details"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Service Type"
+                        android:textColor="#9E9E9E"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/serviceNameText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Switch Repair"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Description"
+                        android:textColor="#9E9E9E"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/descriptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Kitchen light switch is not working properly. Sometimes it works, sometimes it doesn't."
+                        android:textColor="#616161"
+                        android:textSize="14sp"
+                        android:lineSpacingExtra="4dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Location & Time Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Location &amp; Time"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="16dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_location_pin"
+                            app:tint="#3C61FF" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Address"
+                                android:textColor="#9E9E9E"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/addressText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="123 Main Street, Apt 4B, San Francisco, CA 94102"
+                                android:textColor="#616161"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/distanceText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="2.3 km away"
+                                android:textColor="#3C61FF"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_history"
+                            app:tint="#3C61FF" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Scheduled Time"
+                                android:textColor="#9E9E9E"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/scheduledTimeText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="10:00 AM"
+                                android:textColor="#616161"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Earnings Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#66BB6A">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="20dp"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:cardCornerRadius="24dp"
+                        app:cardBackgroundColor="#40FFFFFF"
+                        app:cardElevation="0dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_dollar"
+                            app:tint="@android:color/white" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="You'll Earn"
+                            android:textColor="#E0E0E0"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/earningsText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="₹50"
+                            android:textColor="@android:color/white"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Buttons -->
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rejectButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="Reject"
+            android:textColor="#F44336"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            app:cornerRadius="16dp"
+            app:strokeColor="#FFE0E0"
+            app:strokeWidth="1dp"
+            android:backgroundTint="#FFF0F0"
+            app:icon="@drawable/ic_delete"
+            app:iconTint="#F44336" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/acceptButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Accept"
+            android:textColor="@android:color/white"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            app:cornerRadius="16dp"
+            android:backgroundTint="#3C61FF"
+            app:icon="@drawable/ic_check_circle" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

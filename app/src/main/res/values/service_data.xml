@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Electrician Services -->
+    <string-array name="electrician_service_names">
+        <item>Switch Repair</item>
+        <item>Light Installation</item>
+        <item>Wiring Issue</item>
+        <item>Fan Installation</item>
+        <item>Socket Installation</item>
+        <item>Circuit Breaker</item>
+        <item>Electrical Panel</item>
+        <item>Cable Installation</item>
+        <item>Ceiling Fan Repair</item>
+        <item>Chandelier</item>
+    </string-array>
+
+    <string-array name="electrician_service_prices">
+        <item>From ₹149</item>
+        <item>From ₹249</item>
+        <item>From ₹499</item>
+        <item>From ₹199</item>
+        <item>From ₹149</item>
+        <item>From ₹799</item>
+        <item>From ₹1499</item>
+        <item>From ₹299</item>
+        <item>From ₹249</item>
+        <item>From ₹599</item>
+    </string-array>
+
+    <!-- Plumber Services -->
+    <string-array name="plumber_service_names">
+        <item>Pipe Leakage</item>
+        <item>Drain Cleaning</item>
+        <item>Water Heater</item>
+        <item>Faucet Repair</item>
+        <item>Toilet Repair</item>
+        <item>Shower Installation</item>
+        <item>Sink Installation</item>
+        <item>Water Pump</item>
+        <item>Sewer Line</item>
+        <item>Garbage Disposal</item>
+    </string-array>
+
+    <string-array name="plumber_service_prices">
+        <item>From ₹299</item>
+        <item>From ₹249</item>
+        <item>From ₹599</item>
+        <item>From ₹149</item>
+        <item>From ₹299</item>
+        <item>From ₹999</item>
+        <item>From ₹799</item>
+        <item>From ₹1199</item>
+        <item>From ₹1999</item>
+        <item>From ₹699</item>
+    </string-array>
+
+    <!-- Drawable Arrays (to make them truly editable) -->
+    <integer-array name="electrician_service_icons">
+        <item>@drawable/ic_power</item>
+        <item>@drawable/ic_lightbulb</item>
+        <item>@drawable/ic_flash</item>
+        <item>@drawable/ic_flash</item>
+        <item>@drawable/ic_power</item>
+        <item>@drawable/ic_flash</item>
+        <item>@drawable/ic_flash</item>
+        <item>@drawable/ic_flash</item>
+        <item>@drawable/ic_flash</item>
+        <item>@drawable/ic_lightbulb</item>
+    </integer-array>
+
+    <integer-array name="electrician_service_images">
+        <item>@drawable/switch_repair</item>      <!-- Switch Repair -->
+        <item>@drawable/light_installation</item>  <!-- Light Installation -->
+        <item>@drawable/wiring_issue</item>      <!-- Wiring Issue -->
+        <item>@drawable/fan_installation</item> <!-- Fan Installation -->
+        <item>@drawable/socket_installation</item>      <!-- Socket Installation -->
+        <item>@drawable/circuit_breaker</item>      <!-- Circuit Breaker -->
+        <item>@drawable/electrical_panel</item> <!-- Electrical Panel -->
+        <item>@drawable/cable_installation</item>      <!-- Cable Installation -->
+        <item>@drawable/ceiling_fan_repair</item> <!-- Ceiling Fan Repair -->
+        <item>@drawable/chandelier</item>  <!-- Chandelier -->
+    </integer-array>
+
+    <integer-array name="plumber_service_icons">
+        <item>@drawable/ic_water_drop</item>
+        <item>@drawable/ic_wrench</item>
+        <item>@drawable/ic_heater</item>
+        <item>@drawable/ic_water_drop</item>
+        <item>@drawable/ic_toilet</item>
+        <item>@drawable/ic_shower</item>
+        <item>@drawable/ic_wrench</item>
+        <item>@drawable/ic_wrench</item>
+        <item>@drawable/ic_wrench</item>
+        <item>@drawable/ic_wrench</item>
+    </integer-array>
+
+    <integer-array name="plumber_service_images">
+        <item>@drawable/pipe_leakage</item>  <!-- Pipe Leakage -->
+        <item>@drawable/drain_cleaning</item>  <!-- Drain Cleaning -->
+        <item>@drawable/water_heater</item>      <!-- Water Heater -->
+        <item>@drawable/faucet_repair</item>  <!-- Faucet Repair -->
+        <item>@drawable/toilet_repair</item>      <!-- Toilet Repair -->
+        <item>@drawable/shower_installation</item>      <!-- Shower Installation -->
+        <item>@drawable/sink_installation</item>  <!-- Sink Installation -->
+        <item>@drawable/water_pump</item>      <!-- Water Pump -->
+        <item>@drawable/sewer_line</item>      <!-- Sewer Line -->
+        <item>@drawable/garbage_disposal</item>      <!-- Garbage Disposal -->
+    </integer-array>
+</resources>
