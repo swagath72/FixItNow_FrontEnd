@@ -44,6 +44,7 @@ class ChatDetailAdapter(private val messages: List<Message>) : RecyclerView.Adap
         }
         
         if (message.isSent && holder.statusIcon != null) {
+            holder.statusIcon.imageTintList = android.content.res.ColorStateList.valueOf(android.graphics.Color.WHITE)
             when (message.status) {
                 "read" -> holder.statusIcon.setImageResource(R.drawable.ic_tick_double_blue)
                 "delivered" -> holder.statusIcon.setImageResource(R.drawable.ic_tick_double)

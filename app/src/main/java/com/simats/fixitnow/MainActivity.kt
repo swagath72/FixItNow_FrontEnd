@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         val createAccountButton = findViewById<TextView>(R.id.createAccountButton)
         val forgotPasswordText = findViewById<TextView>(R.id.forgotPasswordText)
 
+
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -79,6 +80,7 @@ class MainActivity : AppCompatActivity() {
                             with(sharedPref.edit()) {
                                 putString("AUTH_TOKEN", loginResponse.token)
                                 putString("USER_EMAIL", email) // Save email for booking
+                                putString("USER_PASSWORD", password) // Save password for status check
                                 putString("USER_ROLE", loginResponse.role) // Save role for auto-login
                                 
                                 // Ensure USER_NAME is saved, fallback to email name if fullName is null
@@ -90,6 +92,7 @@ class MainActivity : AppCompatActivity() {
                                 putString("BOOKING_STATUS", loginResponse.bookingStatus)
                                 putBoolean("HAS_COMPLETED_ONBOARDING", loginResponse.hasCompletedOnboarding)
                                 putString("PROFILE_PIC_URL", loginResponse.profilePicUrl)
+                                putString("USER_VERIFICATION_STATUS", loginResponse.verificationStatus)
                                 
                                 if (!loginResponse.houseNumber.isNullOrEmpty() && !loginResponse.area.isNullOrEmpty()) {
                                     val displayLoc = "${loginResponse.houseNumber}, ${loginResponse.area}"
@@ -107,12 +110,18 @@ class MainActivity : AppCompatActivity() {
                                 "Customer" -> Intent(this@MainActivity, HomeActivity::class.java)
                                 "Technician" -> {
                                     if (loginResponse.hasCompletedOnboarding) {
-                                        Intent(this@MainActivity, TechnicianHomeActivity::class.java)
+                                        if (loginResponse.verificationStatus.equals("approved", ignoreCase = true)) {
+                                            Intent(this@MainActivity, TechnicianHomeActivity::class.java)
+                                        } else {
+                                            Intent(this@MainActivity, TechnicianPendingActivity::class.java)
+                                        }
                                     } else {
                                         // Resume onboarding from registration
                                         Intent(this@MainActivity, TechnicianRegistrationActivity::class.java)
                                     }
                                 }
+                                "admin" -> Intent(this@MainActivity, AdminDashboardActivity::class.java)
+                                "Admin" -> Intent(this@MainActivity, AdminDashboardActivity::class.java)
                                 else -> Intent(this@MainActivity, RoleSelectionActivity::class.java).apply {
                                     putExtra("AUTH_TOKEN", loginResponse.token)
                                 }

@@ -25,6 +25,7 @@ class JobRequestDetailsActivity : AppCompatActivity() {
 
         bookingId = intent.getIntExtra("BOOKING_ID", -1)
         val customerName = intent.getStringExtra("CUSTOMER_NAME")
+        val customerEmail = intent.getStringExtra("CUSTOMER_EMAIL")
         val serviceName = intent.getStringExtra("SERVICE_NAME")
         val description = intent.getStringExtra("DESCRIPTION")
         val address = intent.getStringExtra("ADDRESS")
@@ -41,15 +42,15 @@ class JobRequestDetailsActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.earningsText).text = "₹$cost"
 
         findViewById<MaterialButton>(R.id.acceptButton).setOnClickListener {
-            updateStatus("Accepted", customerName, serviceName, description, address, scheduledTime, cost)
+            updateStatus("Accepted", customerName, customerEmail, serviceName, description, address, scheduledTime, cost)
         }
 
         findViewById<MaterialButton>(R.id.rejectButton).setOnClickListener {
-            updateStatus("Rejected", null, null, null, null, null, null)
+            updateStatus("Rejected", null, null, null, null, null, null, null)
         }
     }
 
-    private fun updateStatus(status: String, customerName: String?, serviceName: String?, description: String?, address: String?, time: String?, cost: String?) {
+    private fun updateStatus(status: String, customerName: String?, customerEmail: String?, serviceName: String?, description: String?, address: String?, time: String?, cost: String?) {
         val sharedPref = getSharedPreferences("FIXITNOW_PREFS", Context.MODE_PRIVATE)
         val token = sharedPref.getString("AUTH_TOKEN", "") ?: ""
 
@@ -64,6 +65,7 @@ class JobRequestDetailsActivity : AppCompatActivity() {
                         val intent = Intent(this@JobRequestDetailsActivity, StartJobActivity::class.java)
                         intent.putExtra("BOOKING_ID", bookingId)
                         intent.putExtra("CUSTOMER_NAME", customerName)
+                        intent.putExtra("CUSTOMER_EMAIL", customerEmail)
                         intent.putExtra("SERVICE_NAME", serviceName)
                         intent.putExtra("DESCRIPTION", description)
                         intent.putExtra("ADDRESS", address)

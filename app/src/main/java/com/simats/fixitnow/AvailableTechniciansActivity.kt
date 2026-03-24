@@ -31,6 +31,7 @@ class AvailableTechniciansActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: TechnicianAdapter
+    private lateinit var fusedLocationClient: com.google.android.gms.location.FusedLocationProviderClient
     private var technicianList: List<TechnicianResponse> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +45,8 @@ class AvailableTechniciansActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.techniciansRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
+        
+        fusedLocationClient = com.google.android.gms.location.LocationServices.getFusedLocationProviderClient(this)
 
         val finalBookNowButton = findViewById<MaterialButton>(R.id.finalBookNowButton)
         
@@ -74,8 +77,26 @@ class AvailableTechniciansActivity : AppCompatActivity() {
     }
 
     private fun fetchTechnicians() {
+        if (androidx.core.app.ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            // If no permission, fetch all (or skip)
+            callGetTechnicians(null, null)
+            return
+        }
+
+        fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+            if (location != null) {
+                callGetTechnicians(location.latitude, location.longitude)
+            } else {
+                callGetTechnicians(null, null)
+            }
+        }.addOnFailureListener {
+            callGetTechnicians(null, null)
+        }
+    }
+
+    private fun callGetTechnicians(lat: Double?, lng: Double?) {
         val apiService = RetrofitClient.createService(ApiService::class.java)
-        apiService.getTechnicians().enqueue(object : Callback<List<TechnicianResponse>> {
+        apiService.getTechnicians(lat, lng).enqueue(object : Callback<List<TechnicianResponse>> {
             override fun onResponse(call: Call<List<TechnicianResponse>>, response: Response<List<TechnicianResponse>>) {
                 if (response.isSuccessful) {
                     technicianList = response.body() ?: emptyList()
@@ -121,7 +142,9 @@ class AvailableTechniciansActivity : AppCompatActivity() {
                         putString("BOOKING_STATUS", "On the way")
                         apply()
                     }
+                    val bookingId = response.body()?.booking_id ?: -1
                     val intent = Intent(this@AvailableTechniciansActivity, TrackTechnicianActivity::class.java)
+                    intent.putExtra("BOOKING_ID", bookingId)
                     intent.putExtra("TECH_NAME", tech.fullName)
                     intent.putExtra("TECH_EMAIL", tech.email)
                     startActivity(intent)
@@ -159,7 +182,7 @@ class TechnicianAdapter(private val technicians: List<TechnicianResponse>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val tech = technicians[position]
         holder.name.text = tech.fullName ?: "Unknown"
-        holder.rating.text = "4.8 (New)"
+        holder.rating.text = if (tech.distance != null) "${tech.distance} away" else "4.8 (New)"
     }
 
     override fun getItemCount() = technicians.size

@@ -39,7 +39,7 @@ class TrackTechnicianActivity : AppCompatActivity(), PaymentResultWithDataListen
     private var technicianEmail: String? = null
     
     private val handler = Handler(Looper.getMainLooper())
-    private val pollingInterval = 10000L // 10 seconds
+    private val pollingInterval = 5000L // 5 seconds for smoother tracking
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,7 +89,38 @@ class TrackTechnicianActivity : AppCompatActivity(), PaymentResultWithDataListen
         }
 
         findViewById<MaterialButton>(R.id.callButton).setOnClickListener {
-            Toast.makeText(this, "Calling $bookedTechName...", Toast.LENGTH_SHORT).show()
+            technicianEmail?.let { email ->
+                if (email.isNotEmpty()) {
+                    val sharedPref = getSharedPreferences("FIXITNOW_PREFS", Context.MODE_PRIVATE)
+                    val token = sharedPref.getString("AUTH_TOKEN", "") ?: ""
+                    val apiService = RetrofitClient.createService(ApiService::class.java)
+
+                    apiService.getUserPhone("Bearer $token", email).enqueue(object : Callback<UserPhoneResponse> {
+                        override fun onResponse(call: Call<UserPhoneResponse>, response: Response<UserPhoneResponse>) {
+                            if (response.isSuccessful) {
+                                val phone = response.body()?.phone ?: ""
+                                if (phone.isNotEmpty()) {
+                                    val intent = Intent(Intent.ACTION_DIAL)
+                                    intent.data = android.net.Uri.parse("tel:$phone")
+                                    startActivity(intent)
+                                } else {
+                                    Toast.makeText(this@TrackTechnicianActivity, "Phone number not available", Toast.LENGTH_SHORT).show()
+                                }
+                            } else {
+                                Toast.makeText(this@TrackTechnicianActivity, "Failed to fetch phone number", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<UserPhoneResponse>, t: Throwable) {
+                            Toast.makeText(this@TrackTechnicianActivity, "Network error: ${t.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+                } else {
+                    Toast.makeText(this, "Technician contact info not available", Toast.LENGTH_SHORT).show()
+                }
+            } ?: run {
+                Toast.makeText(this, "Technician contact info not available", Toast.LENGTH_SHORT).show()
+            }
         }
 
         findViewById<MaterialButton>(R.id.chatButton).setOnClickListener {
@@ -118,8 +149,15 @@ class TrackTechnicianActivity : AppCompatActivity(), PaymentResultWithDataListen
             override fun onResponse(call: Call<List<BookingResponse>>, response: Response<List<BookingResponse>>) {
                 if (response.isSuccessful) {
                     val booking = response.body()?.find { it.id == bookingId }
-                    booking?.let {
-                        updateUI(it)
+                    if (booking != null) {
+                        updateUI(booking)
+                    } else {
+                        // If booking not found in active, it might be paid/closed
+                        // Check if we already knew it was completed
+                        if (statusText.text.toString().contains("Completed")) {
+                            statusText.text = "Job Completed - Payment Successful"
+                            payNowButton.visibility = View.GONE
+                        }
                     }
                 }
             }
@@ -137,8 +175,13 @@ class TrackTechnicianActivity : AppCompatActivity(), PaymentResultWithDataListen
         cost = rawCost.replace(Regex("[^\\d.]"), "").toDoubleOrNull() ?: 0.0
 
         if (booking.status == "Completed") {
-            payNowButton.visibility = View.VISIBLE
-            statusText.text = "Job Completed - Pending Payment"
+            if (booking.paymentStatus == "Paid") {
+                payNowButton.visibility = View.GONE
+                statusText.text = "Job Completed - Payment Successful"
+            } else {
+                payNowButton.visibility = View.VISIBLE
+                statusText.text = "Job Completed - Pending Payment"
+            }
         } else {
             payNowButton.visibility = View.GONE
         }
@@ -160,6 +203,9 @@ class TrackTechnicianActivity : AppCompatActivity(), PaymentResultWithDataListen
                         fetchTechnicianLocation(email)
                     }
                 }
+                // Also poll for booking details to catch status/payment updates
+                fetchBookingDetails()
+                
                 handler.postDelayed(this, pollingInterval)
             }
         })
@@ -208,7 +254,8 @@ class TrackTechnicianActivity : AppCompatActivity(), PaymentResultWithDataListen
             val marker = Marker(map)
             marker.position = it
             marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-            marker.title = "Your Location"
+            marker.title = "Your Destination"
+            marker.icon = ContextCompat.getDrawable(this, R.drawable.ic_home)
             map.overlays.add(marker)
         }
 
@@ -217,7 +264,7 @@ class TrackTechnicianActivity : AppCompatActivity(), PaymentResultWithDataListen
             marker.position = it
             marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
             marker.title = "Technician"
-            marker.icon = ContextCompat.getDrawable(this, org.osmdroid.library.R.drawable.marker_default)
+            marker.icon = ContextCompat.getDrawable(this, R.drawable.ic_person)
             map.overlays.add(marker)
         }
 

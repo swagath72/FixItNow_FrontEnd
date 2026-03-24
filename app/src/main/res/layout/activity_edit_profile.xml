@@ -78,8 +78,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/ic_person"
-                        app:tint="#BDBDBD" />
+                        android:src="@drawable/ic_person" />
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/editProfilePhotoButton"
@@ -209,6 +208,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/edit_text_background"
+                        android:inputType="phone"
+                        android:maxLength="10"
                         android:padding="12dp"
                         android:text="+1 (555) 123-4567"
                         android:textColor="@color/input_text_color"
@@ -260,6 +261,8 @@
                         android:layout_marginTop="8dp"
                         android:background="@drawable/edit_text_background"
                         android:padding="12dp"
+                        android:focusable="false"
+                        android:inputType="none"
                         android:text="john.smith@example.com"
                         android:textColor="@color/input_text_color"
                         android:textColorHint="@color/hint_text_color"
@@ -357,23 +360,7 @@
                 android:textStyle="bold"
                 app:cornerRadius="28dp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/logoutSubButton"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginTop="8dp"
-                android:backgroundTint="#FFF0F0"
-                android:text="Logout"
-                android:textAllCaps="false"
-                android:textColor="#F44336"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:icon="@drawable/ic_logout"
-                app:iconGravity="textStart"
-                app:iconTint="#F44336"
-                app:cornerRadius="28dp"
-                app:strokeColor="#FFE0E0"
-                app:strokeWidth="1dp" />
+
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

@@ -16,6 +16,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.simats.fixitnow.network.ApiService
+import java.util.Calendar
+import java.util.Locale
 import com.simats.fixitnow.network.BookingResponse
 import com.simats.fixitnow.network.RetrofitClient
 import com.simats.fixitnow.network.SubmitRatingRequest
@@ -28,6 +30,7 @@ class HomeFragment : Fragment() {
     private lateinit var viewPager: ViewPager2
     private lateinit var indicator: TabLayout
     private lateinit var recentBookingsContainer: LinearLayout
+    private var isRatingDialogShowing = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,15 +49,7 @@ class HomeFragment : Fragment() {
 
         val sharedPref = requireActivity().getSharedPreferences("FIXITNOW_PREFS", Context.MODE_PRIVATE)
 
-        val greetingText = view.findViewById<TextView>(R.id.greetingText)
-        val userName = sharedPref.getString("USER_NAME", "User")
-        greetingText.text = "Hello, $userName! 👋"
-
-        val locationText = view.findViewById<TextView>(R.id.locationText)
-        val savedLocation = sharedPref.getString("USER_DISPLAY_LOCATION", 
-                           sharedPref.getString("USER_LOCATION", "Set your location"))
-        locationText.text = savedLocation
-
+        refreshUserData()
         fetchActiveBookings()
         fetchRecentBookings()
 
@@ -63,7 +58,7 @@ class HomeFragment : Fragment() {
         }
         
         view.findViewById<View>(R.id.locationIcon).setOnClickListener(openAddressSelection)
-        locationText.setOnClickListener(openAddressSelection)
+        view.findViewById<View>(R.id.locationText).setOnClickListener(openAddressSelection)
 
         // Set images for Electrician Card
         view.findViewById<View>(R.id.serviceElectrician)?.let { card ->
@@ -101,7 +96,7 @@ class HomeFragment : Fragment() {
                     setupViewPager(bookings)
                     
                     // Check for bookings that need rating (status is "Completed" AND rating is not yet submitted)
-                    bookings.find { it.status == "Completed" && (it.ratingValue == null || it.ratingValue <= 0) }?.let { completedBooking ->
+                    bookings.find { it.status == "Completed" && (it.ratingValue == null || it.ratingValue <= 0) && !sharedPref.getBoolean("RATED_${it.id}", false) }?.let { completedBooking ->
                         Log.d("FixItNow", "Unrated completed booking Found in active! Showing dialog for ID: ${completedBooking.id}")
                         showRatingDialog(completedBooking)
                     }
@@ -119,7 +114,14 @@ class HomeFragment : Fragment() {
         if (token.isEmpty()) return
 
         val apiService = RetrofitClient.createService(ApiService::class.java)
-        apiService.getRecentBookings("Bearer $token").enqueue(object : Callback<List<BookingResponse>> {
+        
+        val calendar = Calendar.getInstance()
+        val todayStr = String.format(Locale.getDefault(), "%02d/%02d/%d", 
+            calendar.get(Calendar.DAY_OF_MONTH), 
+            calendar.get(Calendar.MONTH) + 1, 
+            calendar.get(Calendar.YEAR))
+            
+        apiService.getRecentBookings("Bearer $token", todayStr).enqueue(object : Callback<List<BookingResponse>> {
             override fun onResponse(call: Call<List<BookingResponse>>, response: Response<List<BookingResponse>>) {
                 if (response.isSuccessful) {
                     val bookings = response.body() ?: emptyList()
@@ -129,7 +131,7 @@ class HomeFragment : Fragment() {
                     
                     // Also check recent bookings for jobs that need rating
                     if (isAdded) {
-                        bookings.find { it.status == "Completed" && (it.ratingValue == null || it.ratingValue <= 0) }?.let { completedBooking ->
+                        bookings.find { it.status == "Completed" && (it.ratingValue == null || it.ratingValue <= 0) && !sharedPref.getBoolean("RATED_${it.id}", false) }?.let { completedBooking ->
                             Log.d("FixItNow", "Unrated completed booking Found in recent! Showing dialog for ID: ${completedBooking.id}")
                             showRatingDialog(completedBooking)
                         }
@@ -187,8 +189,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun showRatingDialog(booking: BookingResponse) {
-        if (!isAdded) return
+        if (!isAdded || isRatingDialogShowing) return
         
+        isRatingDialogShowing = true
         val dialog = androidx.appcompat.app.AlertDialog.Builder(requireContext()).create()
         val dialogView = layoutInflater.inflate(R.layout.dialog_rating, null)
         dialog.setView(dialogView)
@@ -210,6 +213,7 @@ class HomeFragment : Fragment() {
         }
 
         skipText.setOnClickListener { dialog.dismiss() }
+        dialog.setOnDismissListener { isRatingDialogShowing = false }
         dialog.show()
     }
 
@@ -224,8 +228,10 @@ class HomeFragment : Fragment() {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
                     Toast.makeText(requireContext(), "Thank you for your feedback!", Toast.LENGTH_SHORT).show()
+                    sharedPref.edit().putBoolean("RATED_${bookingId}", true).apply()
                     dialog.dismiss()
                     fetchActiveBookings() // Refresh to remove the completed job from list
+                    fetchRecentBookings()
                 } else {
                     Toast.makeText(requireContext(), "Failed to submit rating", Toast.LENGTH_SHORT).show()
                 }
@@ -238,7 +244,18 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        refreshUserData()
+    }
+
+    private fun refreshUserData() {
         val sharedPref = requireActivity().getSharedPreferences("FIXITNOW_PREFS", Context.MODE_PRIVATE)
+        
+        // Update Name
+        val greetingText = view?.findViewById<TextView>(R.id.greetingText)
+        val userName = sharedPref.getString("USER_FULL_NAME", sharedPref.getString("USER_NAME", "User"))
+        greetingText?.text = "Hello, $userName! 👋"
+
+        // Update Location
         val locationText = view?.findViewById<TextView>(R.id.locationText)
         val savedLocation = sharedPref.getString("USER_DISPLAY_LOCATION", 
                            sharedPref.getString("USER_LOCATION", "Set your location"))

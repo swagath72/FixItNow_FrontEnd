@@ -50,7 +50,7 @@
                     android:layout_width="14dp"
                     android:layout_height="14dp"
                     android:src="@drawable/ic_tick_single"
-                    app:tint="#E0E0E0" />
+                    app:tint="@android:color/white" />
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

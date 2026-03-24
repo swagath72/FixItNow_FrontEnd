@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
 
     <application
         android:label="FIXIT NOW"
@@ -33,7 +35,8 @@
             android:exported="false" />
         <activity
             android:name=".CreateAccountActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
         <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
@@ -181,6 +184,28 @@
             android:exported="false"
             android:theme="@style/Theme.FIXITNOW.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".AdminDashboardActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".AdminVerificationActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".FullScreenImageActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+        <activity
+            android:name=".TechnicianPendingActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FIXITNOW.NoActionBar" />
+
+        <service
+            android:name=".LocationService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="location" />
     </application>
 
 </manifest>

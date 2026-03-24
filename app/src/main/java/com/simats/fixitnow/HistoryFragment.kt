@@ -111,7 +111,13 @@ class HistoryFragment : Fragment() {
             
             // Map the status text if it exists in the layout
             cardView.findViewById<TextView>(R.id.bookingStatus)?.let {
-                it.text = booking.status ?: "Completed"
+                var finalStatus = booking.status ?: "Completed"
+                if (isCompleted && booking.paymentStatus == "Paid") {
+                    finalStatus += " - Paid"
+                } else if (isCompleted) {
+                    finalStatus += " - Pending Payment"
+                }
+                it.text = finalStatus
                 if (isCancelled) it.setTextColor(Color.RED) else it.setTextColor(Color.parseColor("#4CAF50"))
             }
 

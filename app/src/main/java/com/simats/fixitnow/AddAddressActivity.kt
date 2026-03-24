@@ -12,6 +12,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import org.json.JSONArray
+import android.text.Editable
+import android.text.TextWatcher
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.simats.fixitnow.network.AddAddressRequest
@@ -42,9 +47,23 @@ class AddAddressActivity : AppCompatActivity() {
         val streetEditText = findViewById<TextInputEditText>(R.id.streetEditText)
         val areaEditText = findViewById<TextInputEditText>(R.id.areaEditText)
         val cityEditText = findViewById<TextInputEditText>(R.id.cityEditText)
-        val stateEditText = findViewById<TextInputEditText>(R.id.stateEditText)
+        val stateEditText = findViewById<AutoCompleteTextView>(R.id.stateEditText)
         val pincodeEditText = findViewById<TextInputEditText>(R.id.pincodeEditText)
         val landmarkEditText = findViewById<TextInputEditText>(R.id.landmarkEditText)
+
+        val states = arrayOf("Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal", "Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli and Daman and Diu", "Delhi", "Lakshadweep", "Puducherry")
+        val stateAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, states)
+        stateEditText.setAdapter(stateAdapter)
+
+        pincodeEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (s?.length == 6) {
+                    fetchLocationDetails(s.toString(), cityEditText, stateEditText)
+                }
+            }
+        })
 
         if (isEditMode) {
             headerTitle.text = "Edit Address"
@@ -154,5 +173,37 @@ class AddAddressActivity : AppCompatActivity() {
 
         val updatedJson = gson.toJson(addressList)
         sharedPref.edit().putString("SAVED_ADDRESSES_LIST", updatedJson).apply()
+    }
+
+    private fun fetchLocationDetails(pincode: String, cityEditText: TextInputEditText, stateEditText: AutoCompleteTextView) {
+        Thread {
+            try {
+                val url = java.net.URL("https://api.postalpincode.in/pincode/$pincode")
+                val connection = url.openConnection() as java.net.HttpURLConnection
+                connection.requestMethod = "GET"
+                val response = connection.inputStream.bufferedReader().readText()
+                val jsonArray = JSONArray(response)
+                val status = jsonArray.getJSONObject(0).getString("Status")
+                
+                if (status == "Success") {
+                    val postOfficeArray = jsonArray.getJSONObject(0).getJSONArray("PostOffice")
+                    val firstBranch = postOfficeArray.getJSONObject(0)
+                    
+                    val district = if (firstBranch.has("District")) firstBranch.getString("District") else firstBranch.getString("Block")
+                    val state = firstBranch.getString("State")
+                    
+                    runOnUiThread {
+                        cityEditText.setText(district)
+                        stateEditText.setText(state, false)
+                    }
+                } else {
+                    runOnUiThread {
+                        Toast.makeText(this@AddAddressActivity, "Invalid Pincode", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }.start()
     }
 }

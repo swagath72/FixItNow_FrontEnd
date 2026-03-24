@@ -20,10 +20,6 @@ import retrofit2.Response
 
 class TechnicianHomeActivity : AppCompatActivity() {
     private lateinit var bottomNavigation: CurvedBottomNavigationView
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private val handler = Handler(Looper.getMainLooper())
-    private val locationUpdateInterval = 30000L // 30 seconds
-
     private var currentNavIndex = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,9 +29,6 @@ class TechnicianHomeActivity : AppCompatActivity() {
 
         bottomNavigation = findViewById(R.id.bottomNavigation)
         
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        startLocationUpdates()
-
         // Load default fragment
         if (savedInstanceState == null) {
             loadFragment(TechnicianHomeFragment(), 0)
@@ -106,45 +99,25 @@ class TechnicianHomeActivity : AppCompatActivity() {
             return
         }
 
-        handler.post(object : Runnable {
-            override fun run() {
-                try {
-                    fusedLocationClient.lastLocation.addOnSuccessListener { location ->
-                        location?.let {
-                            sendLocationToBackend(it.latitude, it.longitude)
-                        }
-                    }
-                } catch (e: SecurityException) {
-                    Log.e("FixItNow", "Location permission missing")
-                }
-                handler.postDelayed(this, locationUpdateInterval)
-            }
-        })
+        val intent = android.content.Intent(this, LocationService::class.java)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            startForegroundService(intent)
+        } else {
+            startService(intent)
+        }
     }
 
-    private fun sendLocationToBackend(lat: Double, lng: Double) {
-        val sharedPref = getSharedPreferences("FIXITNOW_PREFS", android.content.Context.MODE_PRIVATE)
-        val token = sharedPref.getString("AUTH_TOKEN", "") ?: ""
-        if (token.isEmpty()) return
-
-        val apiService = RetrofitClient.createService(ApiService::class.java)
-        val request = UpdateLocationRequest(lat, lng)
-        
-        apiService.updateLocation("Bearer $token", request).enqueue(object : Callback<Void> {
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if (response.isSuccessful) {
-                    Log.d("FixItNow", "Location updated on server: $lat, $lng")
-                }
-            }
-            override fun onFailure(call: Call<Void>, t: Throwable) {
-                Log.e("FixItNow", "Failed to update location: ${t.message}")
-            }
-        })
+    private fun stopLocationUpdates() {
+        val intent = android.content.Intent(this, LocationService::class.java)
+        stopService(intent)
     }
 
-    override fun onStop() {
-        super.onStop()
-        handler.removeCallbacksAndMessages(null)
+    override fun onDestroy() {
+        super.onDestroy()
+        // We might want to stop the service when the activity is destroyed, 
+        // OR let it run if the technician is supposed to stay online.
+        // For now, let's stop it for simplicity, but in a real case we'd check availability status.
+        stopLocationUpdates()
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {

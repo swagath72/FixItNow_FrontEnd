@@ -42,12 +42,19 @@ class SplashActivity : AppCompatActivity() {
             when (role) {
                 "Customer" -> Intent(this, HomeActivity::class.java)
                 "Technician" -> {
+                    val verificationStatus = sharedPref.getString("USER_VERIFICATION_STATUS", "")
                     if (hasCompletedOnboarding) {
-                        Intent(this, TechnicianHomeActivity::class.java)
+                        if (verificationStatus.equals("approved", ignoreCase = true)) {
+                            Intent(this, TechnicianHomeActivity::class.java)
+                        } else {
+                            Intent(this, TechnicianPendingActivity::class.java)
+                        }
                     } else {
                         Intent(this, TechnicianRegistrationActivity::class.java)
                     }
                 }
+                "admin" -> Intent(this, AdminDashboardActivity::class.java)
+                "Admin" -> Intent(this, AdminDashboardActivity::class.java)
                 else -> Intent(this, MainActivity::class.java)
             }
         } else {

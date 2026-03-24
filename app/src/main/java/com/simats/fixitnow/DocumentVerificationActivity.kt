@@ -116,8 +116,15 @@ class DocumentVerificationActivity : AppCompatActivity() {
         val onUploadComplete = {
             uploadCount++
             if (uploadCount == totalToUpload) {
+                // Update local state to reflect that onboarding is complete and status is pending
+                with(sharedPref.edit()) {
+                    putBoolean("HAS_COMPLETED_ONBOARDING", true)
+                    putString("USER_VERIFICATION_STATUS", "pending")
+                    apply()
+                }
+                
                 Toast.makeText(this, "Documents Submitted Successfully!", Toast.LENGTH_LONG).show()
-                val intent = android.content.Intent(this, TechnicianHomeActivity::class.java)
+                val intent = android.content.Intent(this, TechnicianPendingActivity::class.java)
                 startActivity(intent)
                 finish()
             }

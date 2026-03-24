@@ -54,8 +54,28 @@ class ChatDetailActivity : AppCompatActivity() {
 
         otherUserEmail = intent.getStringExtra("OTHER_USER_EMAIL") ?: ""
         val otherUserName = intent.getStringExtra("OTHER_USER_NAME") ?: "Chat"
+        val otherUserPhoto = intent.getStringExtra("OTHER_USER_PHOTO")
+        val otherUserRole = intent.getStringExtra("OTHER_USER_ROLE")
         
         binding.chatName.text = otherUserName
+        if (!otherUserRole.isNullOrEmpty()) {
+            binding.chatRole.text = otherUserRole
+            binding.chatRole.visibility = android.view.View.VISIBLE
+        }
+        
+        // Load other user's avatar
+        val photoUrl = if (otherUserPhoto?.startsWith("/") == true) {
+            "${RetrofitClient.BASE_URL}${otherUserPhoto.removePrefix("/")}"
+        } else {
+            otherUserPhoto
+        }
+
+        com.bumptech.glide.Glide.with(this)
+            .load(photoUrl)
+            .placeholder(R.drawable.chat_avatar_placeholder)
+            .error(R.drawable.chat_avatar_placeholder)
+            .circleCrop()
+            .into(binding.chatAvatar)
 
         binding.backButton.setOnClickListener {
             finish()

@@ -26,7 +26,8 @@ data class ChatListItem(
     @SerializedName("last_message") val lastMessage: String,
     val time: String,
     @SerializedName("unread_count") val unreadCount: Int,
-    val role: String
+    val role: String,
+    @SerializedName("profile_pic_url") val profilePicUrl: String? = null
 )
 
 data class ChatResponse(
@@ -37,6 +38,14 @@ data class ChatResponse(
 data class UploadResponse(
     val status: String,
     val url: String
+)
+
+data class AiChatRequest(
+    val message: String
+)
+
+data class AiChatResponse(
+    val response: String
 )
 
 // Auth Models
@@ -58,7 +67,8 @@ data class LoginResponse(
     val pincode: String?,
     val landmark: String?,
     @SerializedName("has_completed_onboarding") val hasCompletedOnboarding: Boolean,
-    @SerializedName("profile_pic_url") val profilePicUrl: String?
+    @SerializedName("profile_pic_url") val profilePicUrl: String?,
+    @SerializedName("verification_status") val verificationStatus: String?
 )
 
 data class RegisterRequest(
@@ -104,7 +114,8 @@ data class TechnicianResponse(
     val email: String?,
     val role: String?,
     val experience: String?,
-    val skills: String?
+    val skills: String?,
+    val distance: String? = null
 )
 
 data class TechnicianEarningsResponse(
@@ -151,6 +162,12 @@ data class TechnicianProfileResponse(
     @SerializedName("profile_pic_url") val profilePicUrl: String?
 )
 
+data class UpdateProfileRequest(
+    @SerializedName("full_name") val fullName: String,
+    val phone: String,
+    val email: String
+)
+
 // Booking Models
 data class BookingResponse(
     val id: Int?,
@@ -164,6 +181,7 @@ data class BookingResponse(
     @SerializedName("customer_name") val customerName: String?,
     @SerializedName("customer_email") val customerEmail: String?,
     val status: String?,
+    @SerializedName("payment_status") val paymentStatus: String?,
     val cost: String?,
     @SerializedName("work_photo_url") val workPhotoUrl: String?,
     @SerializedName("rating_value") val ratingValue: Int?,
@@ -271,7 +289,10 @@ interface ApiService {
     fun addAddress(@Header("Authorization") token: String, @Body request: AddAddressRequest): Call<AddAddressResponse>
 
     @GET("technicians")
-    fun getTechnicians(): Call<List<TechnicianResponse>>
+    fun getTechnicians(
+        @Query("lat") lat: Double? = null,
+        @Query("lng") lng: Double? = null
+    ): Call<List<TechnicianResponse>>
 
     @POST("create-booking")
     fun createBooking(@Header("Authorization") token: String, @Body request: CreateBookingRequest): Call<CreateBookingResponse>
@@ -280,7 +301,7 @@ interface ApiService {
     fun getActiveBookings(@Header("Authorization") token: String): Call<List<BookingResponse>>
 
     @GET("recent-bookings")
-    fun getRecentBookings(@Header("Authorization") token: String): Call<List<BookingResponse>>
+    fun getRecentBookings(@Header("Authorization") token: String, @Query("date") date: String): Call<List<BookingResponse>>
 
     @GET("booking-history")
     fun getBookingHistory(@Header("Authorization") token: String): Call<List<BookingResponse>>
@@ -307,6 +328,9 @@ interface ApiService {
     @GET("user/technician-profile")
     fun getTechnicianProfile(@Header("Authorization") token: String): Call<TechnicianProfileResponse>
 
+    @POST("user/update-profile")
+    fun updateProfile(@Header("Authorization") token: String, @Body request: UpdateProfileRequest): Call<Void>
+
     @POST("technician/update-job-status")
     fun updateJobStatus(@Header("Authorization") token: String, @Body request: UpdateJobStatusRequest): Call<Void>
  
@@ -329,6 +353,9 @@ interface ApiService {
     @GET("chat/list")
     fun getChatList(@Header("Authorization") token: String): Call<List<ChatListItem>>
  
+    @POST("ai-chat")
+    fun sendAiChat(@Body request: AiChatRequest): Call<AiChatResponse>
+
     @GET("favorites")
     fun getFavorites(@Header("Authorization") token: String): Call<List<FavoriteTechnicianResponse>>
  
@@ -372,4 +399,54 @@ interface ApiService {
 
     @GET("get-technician-location/{email}")
     fun getTechnicianLocation(@Path("email") email: String): Call<LocationResponse>
+
+    @GET("get-user-phone/{email}")
+    fun getUserPhone(@Header("Authorization") token: String, @Path("email") email: String): Call<UserPhoneResponse>
+
+    // Admin Endpoints
+    @GET("admin/technicians/pending")
+    fun getPendingTechnicians(@Header("Authorization") token: String): Call<List<PendingTechnician>>
+
+    @GET("admin/technicians/approved")
+    fun getApprovedTechnicians(@Header("Authorization") token: String): Call<List<PendingTechnician>>
+
+    @GET("admin/technicians/{user_id}/documents")
+    fun getTechnicianDocuments(
+        @Header("Authorization") token: String,
+        @Path("user_id") userId: Int
+    ): Call<List<TechnicianDocument>>
+
+    @POST("admin/technicians/{user_id}/verify")
+    fun verifyTechnician(
+        @Header("Authorization") token: String,
+        @Path("user_id") userId: Int,
+        @Body request: VerifyRequest
+    ): Call<VerifyResponse>
 }
+
+data class PendingTechnician(
+    val id: Int,
+    val full_name: String,
+    val email: String,
+    val phone: String,
+    val skills: String?,
+    val experience: String?,
+    @SerializedName("profile_pic_url") val profile_pic_url: String?,
+    @SerializedName("verification_status") val verification_status: String
+)
+
+data class TechnicianDocument(
+    val id: Int,
+    @SerializedName("doc_type") val doc_type: String,
+    @SerializedName("file_url") val file_url: String,
+    @SerializedName("uploaded_at") val uploaded_at: String
+)
+
+data class VerifyRequest(
+    val status: String,
+    val remarks: String? = null
+)
+
+data class VerifyResponse(val message: String)
+
+data class UserPhoneResponse(val phone: String)

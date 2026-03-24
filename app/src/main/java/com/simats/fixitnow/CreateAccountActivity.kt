@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputFilter
 import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.TextView
@@ -34,6 +35,17 @@ class CreateAccountActivity : AppCompatActivity() {
         val passwordEditText = findViewById<EditText>(R.id.passwordEditText)
         val confirmPasswordEditText = findViewById<EditText>(R.id.confirmPasswordEditText)
         val createAccountButton = findViewById<TextView>(R.id.createAccountButton)
+        val passwordInputLayout = findViewById<com.google.android.material.textfield.TextInputLayout>(R.id.passwordInputLayout)
+        val confirmPasswordInputLayout = findViewById<com.google.android.material.textfield.TextInputLayout>(R.id.confirmPasswordInputLayout)
+
+        fullNameEditText.filters = arrayOf(InputFilter { source, start, end, dest, dstart, dend ->
+            for (i in start until end) {
+                if (!Character.isLetter(source[i]) && !Character.isSpaceChar(source[i])) {
+                    return@InputFilter ""
+                }
+            }
+            null
+        })
 
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -47,12 +59,49 @@ class CreateAccountActivity : AppCompatActivity() {
                 val password = passwordEditText.text.toString().trim()
                 val confirmPassword = confirmPasswordEditText.text.toString().trim()
 
-                val allFilled = fullName.isNotEmpty() &&
-                        phone.isNotEmpty() &&
-                        email.isNotEmpty() &&
+                val isFullNameValid = fullName.isNotEmpty() && fullName.matches(Regex("^[a-zA-Z\\s]+$"))
+                val isEmailValid = email.isNotEmpty() && email.matches(Regex("^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}$"))
+                val isPhoneValid = phone.length == 10
+                val isPassMatch = password == confirmPassword
+                val isPassValid = isPasswordValid(password)
+
+                if (fullName.isNotEmpty() && !isFullNameValid) {
+                    fullNameEditText.error = "Full Name must only contain letters"
+                } else {
+                    fullNameEditText.error = null
+                }
+
+                if (phone.isNotEmpty() && !isPhoneValid) {
+                    phoneNumberEditText.error = "Phone number must be 10 digits"
+                } else {
+                    phoneNumberEditText.error = null
+                }
+
+                if (email.isNotEmpty() && !isEmailValid) {
+                    emailEditText.error = "Invalid email address"
+                } else {
+                    emailEditText.error = null
+                }
+
+                if (password.isNotEmpty() && !isPassValid) {
+                    passwordInputLayout.error = "Start with Capital, 8+ chars, 1 Special char"
+                } else {
+                    passwordInputLayout.error = null
+                }
+
+                if (confirmPassword.isNotEmpty() && !isPassMatch) {
+                    confirmPasswordInputLayout.error = "Passwords do not match"
+                } else {
+                    confirmPasswordInputLayout.error = null
+                }
+
+                val allFilled = isFullNameValid &&
+                        isPhoneValid &&
+                        isEmailValid &&
                         password.isNotEmpty() &&
                         confirmPassword.isNotEmpty() &&
-                        password == confirmPassword
+                        isPassMatch &&
+                        isPassValid
 
                 createAccountButton.isEnabled = allFilled
             }
@@ -120,5 +169,13 @@ class CreateAccountActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+
+    private fun isPasswordValid(password: String): Boolean {
+        if (password.length < 8) return false
+        if (!password[0].isUpperCase()) return false
+        val specialChars = "!@#$%^&*()_+-=[]{}|;':\",./<>?~`"
+        if (!password.any { it in specialChars }) return false
+        return true
     }
 }

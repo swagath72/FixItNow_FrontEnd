@@ -26,8 +26,7 @@
                 android:id="@+id/serviceImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerInside"
-                android:padding="12dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/ic_fan_installation" />
 
         </com.google.android.material.card.MaterialCardView>

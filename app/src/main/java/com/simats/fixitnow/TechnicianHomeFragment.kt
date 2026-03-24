@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.switchmaterial.SwitchMaterial
@@ -31,7 +32,6 @@ class TechnicianHomeFragment : Fragment() {
     private lateinit var requestCountText: TextView
     private lateinit var jobRequestsContainer: LinearLayout
     private lateinit var userNameText: TextView
-    private lateinit var locationText: TextView
     private lateinit var activeJobsViewPager: ViewPager2
     private lateinit var jobIndicator: TabLayout
 
@@ -52,13 +52,11 @@ class TechnicianHomeFragment : Fragment() {
         requestCountText = view.findViewById(R.id.requestCountText)
         jobRequestsContainer = view.findViewById(R.id.jobRequestsContainer)
         userNameText = view.findViewById(R.id.userNameText)
-        locationText = view.findViewById(R.id.locationText)
         activeJobsViewPager = view.findViewById(R.id.activeJobsViewPager)
         jobIndicator = view.findViewById(R.id.jobIndicator)
 
         val sharedPref = requireActivity().getSharedPreferences("FIXITNOW_PREFS", Context.MODE_PRIVATE)
         userNameText.text = sharedPref.getString("USER_NAME", "Technician")
-        locationText.text = sharedPref.getString("USER_DISPLAY_LOCATION", "Set your location")
 
         val onlineSwitch = view.findViewById<SwitchMaterial>(R.id.onlineSwitch)
         val statusText = view.findViewById<TextView>(R.id.statusText)
@@ -67,10 +65,23 @@ class TechnicianHomeFragment : Fragment() {
         val isOnline = sharedPref.getBoolean("TECH_IS_ONLINE", true)
         onlineSwitch.isChecked = isOnline
         updateOnlineStatusUI(isOnline, statusText)
+        
+        // Initial service state
+        if (isOnline) {
+            startLocationService()
+        } else {
+            stopLocationService()
+        }
 
         onlineSwitch.setOnCheckedChangeListener { _, isChecked ->
             sharedPref.edit().putBoolean("TECH_IS_ONLINE", isChecked).apply()
             updateOnlineStatusUI(isChecked, statusText)
+            
+            if (isChecked) {
+                startLocationService()
+            } else {
+                stopLocationService()
+            }
             
             // Sync with backend
             val token = sharedPref.getString("AUTH_TOKEN", "") ?: ""
@@ -79,12 +90,17 @@ class TechnicianHomeFragment : Fragment() {
                 val request = com.simats.fixitnow.network.UpdateStatusRequest(isChecked)
                 apiService.updateTechnicianStatus("Bearer $token", request).enqueue(object : Callback<Void> {
                     override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                        if (!response.isSuccessful) {
-                            Log.e("FixItNow", "Status sync failed")
+                        if (response.isSuccessful) {
+                            val statusStr = if (isChecked) "online" else "offline"
+                            Toast.makeText(requireContext(), "You are now $statusStr", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Log.e("FixItNow", "Status sync failed: ${response.code()}")
+                            Toast.makeText(requireContext(), "Failed to sync status with server", Toast.LENGTH_SHORT).show()
                         }
                     }
                     override fun onFailure(call: Call<Void>, t: Throwable) {
                         Log.e("FixItNow", "Status sync error: ${t.message}")
+                        Toast.makeText(requireContext(), "Connection error: ${t.message}", Toast.LENGTH_SHORT).show()
                     }
                 })
             }
@@ -103,6 +119,20 @@ class TechnicianHomeFragment : Fragment() {
             statusText.setTextColor(Color.WHITE)
             statusText.alpha = 0.7f
         }
+    }
+
+    private fun startLocationService() {
+        val intent = Intent(requireContext(), LocationService::class.java)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            requireContext().startForegroundService(intent)
+        } else {
+            requireContext().startService(intent)
+        }
+    }
+
+    private fun stopLocationService() {
+        val intent = Intent(requireContext(), LocationService::class.java)
+        requireContext().stopService(intent)
     }
 
     private fun fetchData() {
@@ -152,6 +182,39 @@ class TechnicianHomeFragment : Fragment() {
                 Log.e("FixItNow", "Active Jobs Error: ${t.message}")
             }
         })
+        // Fetch Verification Status
+        apiService.getTechnicianProfile("Bearer $token").enqueue(object : Callback<com.simats.fixitnow.network.TechnicianProfileResponse> {
+            override fun onResponse(call: Call<com.simats.fixitnow.network.TechnicianProfileResponse>, response: Response<com.simats.fixitnow.network.TechnicianProfileResponse>) {
+                if (response.isSuccessful) {
+                    val status = response.body()?.verificationStatus?.lowercase() ?: "pending"
+                    val pendingBanner = view?.findViewById<LinearLayout>(R.id.verificationPendingBanner)
+                    val rejectedBanner = view?.findViewById<LinearLayout>(R.id.verificationRejectedBanner)
+                    
+                    when (status) {
+                        "pending" -> {
+                            pendingBanner?.visibility = View.VISIBLE
+                            rejectedBanner?.visibility = View.GONE
+                            jobRequestsContainer.visibility = View.GONE
+                            view?.findViewById<TextView>(R.id.requestCountText)?.visibility = View.GONE
+                        }
+                        "rejected" -> {
+                            pendingBanner?.visibility = View.GONE
+                            rejectedBanner?.visibility = View.VISIBLE
+                            jobRequestsContainer.visibility = View.GONE
+                            view?.findViewById<TextView>(R.id.requestCountText)?.visibility = View.GONE
+                        }
+                        else -> { // approved or other
+                            pendingBanner?.visibility = View.GONE
+                            rejectedBanner?.visibility = View.GONE
+                            jobRequestsContainer.visibility = View.VISIBLE
+                        }
+                    }
+                }
+            }
+            override fun onFailure(call: Call<com.simats.fixitnow.network.TechnicianProfileResponse>, t: Throwable) {
+                Log.e("FixItNow", "Profile fetch failed: ${t.message}")
+            }
+        })
     }
 
     private fun displayJobs(jobs: List<BookingResponse>) {
@@ -181,8 +244,9 @@ class TechnicianHomeFragment : Fragment() {
 
             cardView.setOnClickListener {
                 val intent = Intent(requireContext(), JobRequestDetailsActivity::class.java)
-                intent.putExtra("BOOKING_ID", job.id)
+                intent.putExtra("BOOKING_ID", job.id ?: -1)
                 intent.putExtra("CUSTOMER_NAME", job.customerName)
+                intent.putExtra("CUSTOMER_EMAIL", job.customerEmail)
                 intent.putExtra("SERVICE_NAME", job.serviceName)
                 intent.putExtra("DESCRIPTION", job.description)
                 intent.putExtra("ADDRESS", job.address)
@@ -212,8 +276,9 @@ class TechnicianHomeFragment : Fragment() {
                 CompleteJobActivity::class.java
             }
             val intent = Intent(requireContext(), nextActivity)
-            intent.putExtra("BOOKING_ID", job.id)
+            intent.putExtra("BOOKING_ID", job.id ?: -1)
             intent.putExtra("CUSTOMER_NAME", job.customerName)
+            intent.putExtra("CUSTOMER_EMAIL", job.customerEmail)
             intent.putExtra("SERVICE_NAME", job.serviceName)
             intent.putExtra("DESCRIPTION", job.description)
             intent.putExtra("ADDRESS", job.address)

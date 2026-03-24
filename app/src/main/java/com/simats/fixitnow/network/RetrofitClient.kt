@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
-    const val BASE_URL = "http://10.0.2.2:8000/" // Special IP for connecting to host machine's localhost from emulator
+    const val BASE_URL = "http://192.168.137.126:8000/" // Special IP for connecting to host machine's localhost from emulator
 
 
     private val okHttpClient = OkHttpClient.Builder()

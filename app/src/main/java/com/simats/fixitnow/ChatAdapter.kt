@@ -2,6 +2,7 @@ package com.simats.fixitnow
 
 import android.content.Intent
 import android.graphics.Typeface
+import com.bumptech.glide.Glide
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,6 +53,20 @@ class ChatAdapter(private var chats: List<ChatListItem>) : RecyclerView.Adapter<
                 chat.time
             }
 
+            // Load profile picture
+            val photoUrl = if (chat.profilePicUrl?.startsWith("/") == true) {
+                "${com.simats.fixitnow.network.RetrofitClient.BASE_URL}${chat.profilePicUrl.removePrefix("/")}"
+            } else {
+                chat.profilePicUrl
+            }
+
+            Glide.with(itemView.context)
+                .load(photoUrl)
+                .placeholder(R.drawable.chat_avatar_placeholder)
+                .error(R.drawable.chat_avatar_placeholder)
+                .circleCrop()
+                .into(avatarImage)
+
             if (chat.unreadCount > 0) {
                 // Show green dot on avatar
                 newMessageDot.visibility = View.VISIBLE
@@ -79,6 +94,8 @@ class ChatAdapter(private var chats: List<ChatListItem>) : RecyclerView.Adapter<
                 val intent = Intent(itemView.context, ChatDetailActivity::class.java).apply {
                     putExtra("OTHER_USER_EMAIL", chat.email)
                     putExtra("OTHER_USER_NAME", chat.name)
+                    putExtra("OTHER_USER_PHOTO", chat.profilePicUrl)
+                    putExtra("OTHER_USER_ROLE", chat.role)
                 }
                 itemView.context.startActivity(intent)
             }

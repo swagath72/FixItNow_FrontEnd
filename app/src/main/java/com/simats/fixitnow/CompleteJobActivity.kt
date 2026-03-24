@@ -3,6 +3,7 @@ package com.simats.fixitnow
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
@@ -47,6 +48,10 @@ class CompleteJobActivity : AppCompatActivity() {
         setContentView(R.layout.activity_complete_job)
 
         bookingId = intent.getIntExtra("BOOKING_ID", -1)
+        Log.d("FixItNow", "CompleteJobActivity: Received bookingId = $bookingId")
+        if (bookingId == -1) {
+            Toast.makeText(this, "Error: Invalid booking ID received", Toast.LENGTH_LONG).show()
+        }
         val customerName = intent.getStringExtra("CUSTOMER_NAME")
         val serviceName = intent.getStringExtra("SERVICE_NAME")
         val cost = intent.getStringExtra("COST")
@@ -91,7 +96,9 @@ class CompleteJobActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     updateStatus("Completed")
                 } else {
-                    Toast.makeText(this@CompleteJobActivity, "Failed to upload photo", Toast.LENGTH_SHORT).show()
+                    val errorMsg = "Failed to upload photo (Code: ${response.code()})"
+                    Log.e("FixItNow", "CompleteJobActivity: $errorMsg")
+                    Toast.makeText(this@CompleteJobActivity, errorMsg, Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<UploadResponse>, t: Throwable) {
@@ -138,7 +145,9 @@ class CompleteJobActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 } else {
-                    Toast.makeText(this@CompleteJobActivity, "Failed to complete job", Toast.LENGTH_SHORT).show()
+                    val errorMsg = "Failed to complete job (Code: ${response.code()})"
+                    Log.e("FixItNow", "CompleteJobActivity: $errorMsg")
+                    Toast.makeText(this@CompleteJobActivity, errorMsg, Toast.LENGTH_SHORT).show()
                 }
             }
 

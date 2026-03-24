@@ -1,0 +1,42 @@
+[
+  {
+    "id": 30,
+    "name": "New Account",
+    "email": "newaccount34@gmail.com",
+    "pass": "Password@123",
+    "phone": "0987654321",
+    "role": null
+  },
+  {
+    "id": 29,
+    "name": "mmmmmmm",
+    "email": "mm@gmail.com",
+    "pass": "Mm@#1234",
+    "phone": "7777777777",
+    "role": null
+  },
+  {
+    "id": 28,
+    "name": "bappam",
+    "email": "bappam@gmail.com",
+    "pass": "Bappam@#123",
+    "phone": "9898989877",
+    "role": null
+  },
+  {
+    "id": 27,
+    "name": "tetsse",
+    "email": "2@gmail.com",
+    "pass": "Ab@12345",
+    "phone": "8784848454",
+    "role": "Technician"
+  },
+  {
+    "id": 26,
+    "name": "test",
+    "email": "1@gmail.com",
+    "pass": "Ab@12345",
+    "phone": "8888588555",
+    "role": null
+  }
+]

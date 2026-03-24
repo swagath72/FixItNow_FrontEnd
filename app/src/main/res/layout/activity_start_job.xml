@@ -6,13 +6,10 @@
     android:layout_height="match_parent"
     android:background="#F2F5FF">
 
-    <View
-        android:id="@+id/headerBackground"
+    <org.osmdroid.views.MapView
+        android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@drawable/technician_header_background"
-        app:layout_constraintHeight_percent="0.65"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent" />
 
     <ImageView
         android:id="@+id/backButton"
@@ -67,32 +64,6 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <ImageView
-        android:id="@+id/navigationIcon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:rotation="-45"
-        android:src="@drawable/ic_send"
-        app:layout_constraintBottom_toTopOf="@+id/navigatingText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/headerBackground"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:tint="#80FFFFFF" />
-
-    <TextView
-        android:id="@+id/navigatingText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Navigating to customer..."
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/headerBackground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/navigationIcon" />
 
     <TextView
         android:id="@+id/customerNameText"

@@ -41,6 +41,11 @@ class ProfileFragment : Fragment() {
         return view
     }
 
+    override fun onResume() {
+        super.onResume()
+        view?.let { loadUserData(it) }
+    }
+
     private fun loadUserData(view: View) {
         val sharedPref = requireActivity().getSharedPreferences("FIXITNOW_PREFS", Context.MODE_PRIVATE)
         val token = sharedPref.getString("AUTH_TOKEN", "") ?: ""

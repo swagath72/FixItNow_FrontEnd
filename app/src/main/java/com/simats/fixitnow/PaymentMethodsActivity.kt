@@ -19,9 +19,6 @@ class PaymentMethodsActivity : AppCompatActivity() {
             finish()
         }
 
-        findViewById<View>(R.id.addNewCardButton)?.setOnClickListener {
-            Toast.makeText(this, "Add card functionality coming soon", Toast.LENGTH_SHORT).show()
-        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
